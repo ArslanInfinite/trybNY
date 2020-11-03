@@ -1,4 +1,7 @@
 Users have many Reservations
+Users have many Activities 
+#how to associate activity with admin boolean user 
+#model aliasing - users have activities if they are a trainer
 Users have many Activities through Reservations
 Users have many Reviews through Activities 
 Users have many Likes
