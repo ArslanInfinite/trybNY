@@ -1,7 +1,6 @@
 class Like < ActiveRecord::Base
 
-  has_many :likes
-  belongs_to :user
-  belongs_to :activity 
+  belongs_to :user, polymorphic: true
+  belongs_to :activity, polymorphic: true
 
 end
