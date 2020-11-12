@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resources :users
   resources :activities
   resources :reservations
-  
+  resources :reviews
+
+  #get 'authors/:id/posts', to: 'authors#posts_index'
+  #get 'authors/:id/posts/:post_id', to: 'authors#post'
+
   get '/users/:id/activities', to: 'users#user_activities', as: 'user_activities'
 
   get "/welcome", to: "users#welcome", as: "welcome"
@@ -20,5 +24,4 @@ Rails.application.routes.draw do
   get '/add_funds', to: 'users#add_funds', as: 'add_funds'
 
   get '/reviews/new/:activity_id', to: 'reviews#new', as: 'new_review'
-  resources :reviews, only: [:create]
 end
