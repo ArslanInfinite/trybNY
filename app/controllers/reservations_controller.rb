@@ -1,5 +1,9 @@
 class ReservationsController < ApplicationController
 
+  def index
+    @reservations = Reservation.all
+  end
+
   def new
     @reservation = Reservation.new
   end
@@ -28,6 +32,25 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     @reservation.update(reservation_params)
     redirect_to reservation_path(@reservation)
+  end
+
+  def show
+    @reservation = Reservation.find(params[:id])
+    @activity = Activity.find(@reservation.activity_id)
+    @user = User.find(@reservation.user_id)
+  end
+
+  def destroy
+    @reservation = Reservation.find(params[:id])
+    @reservation.destroy
+    redirect_to reservations_path
+    flash[:notice] = "Your reservation on #{@reservation.datetime} has been canceled"
+  end
+
+private
+
+  def reservation_params
+    params.require(:reservation).permit(:location, :capacity, :price, :datetime, :user_id, :activity_id)
   end
 
 end 
