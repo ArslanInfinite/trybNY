@@ -16,5 +16,18 @@ class SessionsController < ApplicationController
     end
   end
 
+   def destroy
+    session.delete(:user_id)
+    session[:reservation] = nil
+    session[:user_id] = nil
+    flash[:notice] = 'You are logged out.'
+    redirect_to login_path
+  end
+
+  def mainpage
+    @user = User.find(session[:user_id])
+    render "/mainpage"
+  end
+
 
 end
