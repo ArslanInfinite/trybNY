@@ -1,0 +1,11 @@
+<h1>Manage Funds</h1>
+
+<div class ="new_activity">
+<%= form_for @user, controller: 'users', action: 'create' do |f| %>
+
+<%= f.label :balance%>
+<%= f.number_field :balance %>
+
+<%= f.submit "Add Funds" %>
+<%end %>
+</div>
