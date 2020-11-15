@@ -41,13 +41,13 @@ class UsersController < ApplicationController
   end
 
   def user_activities
-    @user = User.find_by(id: params[:id]
+    @user = User.find_by(id: params[:id])
     @reservations = @user.reservations
     render template: 'activities/index'
   end
 
   def activity 
-    @user = User.find_by(id: params[:id]
+    @user = User.find_by(id: params[:id])
     @activity = Activity.find(params[:activity_id])
     render template: 'activities/show'
   end
