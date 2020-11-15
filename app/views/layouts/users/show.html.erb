@@ -1,0 +1,18 @@
+<h1><%= @user.username %>'s Profile Page</h1>
+
+<br>
+<div class ="new_activity">
+Current Balance: <%= @user.balance %>
+<br>
+
+<%= button_to "Add Funds", edit_user_path, class: "btn", method: :get %>
+
+<%= button_to "View Activities", activities_path,class: "btn", method: :get %>
+
+<%= button_to "Book Reservation", new_reservation_path,class: "btn", method: :get %>
+
+<%= button_to "My Activities", user_activities_path, class: "btn", method: :get %>
+
+<%= button_to "Logout", logout_path, class: "btn", method: :delete %>
+
+</div>
