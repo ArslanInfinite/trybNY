@@ -1,0 +1,18 @@
+<h1>Create Review</h1>
+<br>
+
+<div class ="new_activity">
+<%= form_for @review do |f| %>
+
+<%= f.label :content %>
+<%= f.text_area :content %> <br>
+
+<%= f.label :rating %>
+<%= f.number_field :rating %> <br>
+
+<%= f.hidden_field :user_id, :value => session[:user_id] %>
+<%= f.hidden_field :activity_id, :value => @activity.id %>
+<br>
+<%= f.submit "Create Review", class: "btn"%>
+<% end %>
+</div>
