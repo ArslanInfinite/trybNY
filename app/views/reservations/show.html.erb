@@ -1,0 +1,9 @@
+<h1>  My Reservations </h1>
+<br>
+<h3> Reservation Confirmed  </h3>
+<br>
+------------------------------------------- 
+<br>
+User Profile: <%= link_to @reservation.user_id, user_path(@user) %> <br>
+Activity Page: <%= link_to @reservation.activity_id, activity_path(@activity)%>
+<%= button_to "Cancel Reservation", reservation_path(@reservation), method: :delete %>
