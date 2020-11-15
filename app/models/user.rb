@@ -8,10 +8,7 @@ class User < ActiveRecord::Base
   has_many :reviews, through: :activities, dependent: :destroy
   has_many :likes, as: :likable, dependent: :destroy
 
-  validates :username, presence: true 
-  validates :username, uniqueness: true
-  validates :username, length: { minimum: 4, too_short: "%{count} characters is the minimum allowed" }
-  validates :username, length: { maximum: 20, too_long: "%{count} characters is the maximum allowed" }
+  validates :username, presence: true, uniqueness: true,length: { minimum: 4, too_short: "%{count} characters is the minimum allowed", maximum: 20, too_long: "%{count} characters is the maximum allowed" }
 
   validates :password, presence: true, case_sensitive: false
   validates :password, confirmation: true, case_sensitive: false 
