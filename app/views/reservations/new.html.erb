@@ -1,0 +1,12 @@
+<h1>Book New Reservation</h1>
+<br>
+<div class ="new_activity">
+  <%= @message %>
+<%= form_for @reservation do |f| %>
+<%= f.collection_select :activity_id, Activity.all, :id, :title, prompt: "Select Activity"%>
+<%= f.hidden_field :user_id, :value => session[:user_id] %>
+<br>
+<br>
+<%= f.submit "Confirm Reservation", class: "btn" %>
+<% end %>
+</div>
