@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: true,length: { minimum: 4, too_short: "%{count} characters is the minimum allowed", maximum: 20, too_long: "%{count} characters is the maximum allowed" }
 
-  validates :password, presence: true, case_sensitive: true, confirmation: true  
+  validates :password, presence: true, confirmation: true  
 
 end

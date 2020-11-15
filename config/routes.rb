@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   #   resources :activities, only: [:show, :index]
   # end
 
+  root "home#index"
+
   resources :users
   resources :activities
   resources :reservations
