@@ -6,9 +6,15 @@ Rails.application.routes.draw do
   #   resources :activities, only: [:show, :index]
   # end
 
-  root "home#index"
+  root "welcome#index"
 
-  resources :users
+  get 'signup', to: 'welcome#new'
+  post 'signup', to: 'welcome#create'
+
+  resources :users do
+    resources :activities
+  end
+
   resources :activities
   resources :reservations
   resources :reviews
