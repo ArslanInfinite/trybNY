@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  #before_action :redirect_if_not_logged_in
+  before_action :redirect_if_not_logged_in #will not affect the creation of the user, used for creation of account flow 
   helper_method :current_user, :logged_in?
 
   private 

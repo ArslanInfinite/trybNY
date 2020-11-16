@@ -12,4 +12,11 @@ class User < ActiveRecord::Base
 
   validates :password, presence: true, confirmation: true  
 
+  def self.admin
+    where(admin: true)
+  end
+
+  def self.not_admin
+    where(admin: false)
+  end
 end

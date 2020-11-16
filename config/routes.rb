@@ -8,11 +8,10 @@ Rails.application.routes.draw do
 
   root "welcome#index"
 
-  get 'signup', to: 'welcome#new'
-  post 'signup', to: 'welcome#create'
+  get 'signup', to: 'users#new'
 
   resources :users do
-    resources :activities
+    resources :activities, only: [:show]  #:new
   end
 
   resources :activities
