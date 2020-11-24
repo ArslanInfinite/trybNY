@@ -10,8 +10,15 @@ Rails.application.routes.draw do
 
   get 'signup', to: 'users#new'
 
+  get '/login', to: 'sessions#new' 
+  post '/login', to: 'sessions#create'
+  
+  delete '/logout', to: 'sessions#destroy', as: 'logout'
+  
+  get '/users/:id/activities', to: 'users#user_activities', as: 'user_activities'
+
   resources :users do
-    resources :activities, only: [:show]  #:new
+    resources :activities 
   end
 
   resources :activities
@@ -26,10 +33,6 @@ Rails.application.routes.draw do
 #   get '/mainpage', to: 'sessions#mainpage', as: 'mainpage'
 
 #   get '/login', to: 'sessions#new', as: 'login'
-
-#   post '/login', to: 'sessions#create'
-
-#   delete '/logout', to: 'sessions#destroy', as: 'logout'
 
 #   get '/add_funds', to: 'users#add_funds', as: 'add_funds'
 

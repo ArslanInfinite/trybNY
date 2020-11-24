@@ -8,6 +8,7 @@ class CreateActivities < ActiveRecord::Migration[6.0]
       t.integer :capacity
       t.integer :price
       t.datetime :datetime 
+      t.belongs_to :user
     end
   end
 end

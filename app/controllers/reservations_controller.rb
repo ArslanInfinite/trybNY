@@ -13,7 +13,6 @@ class ReservationsController < ApplicationController
       params[:reservation][:user_id]= session[:user_id]
       params[:reservation][:activity_id] = params[:reservation][:activity_id].to_i
     @reservation = Reservation.new(reservation_params)
-    @reservation.update(location: @activity.location, capacity: @activity.capacity, price: @activity.price, datetime: @activity.datetime)
     if @reservation.valid?
       @reservation.save
       @user = User.find(session[:user_id])
@@ -43,14 +42,14 @@ class ReservationsController < ApplicationController
   def destroy
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
-    redirect_to reservations_path
-    flash[:notice] = "Your reservation on #{@reservation.datetime} has been canceled"
+    redirect_to activities_path
+    flash[:notice] = "Your reservation on #{@reservation.activity.datetime} has been canceled"
   end
 
 private
 
   def reservation_params
-    params.require(:reservation).permit(:location, :capacity, :price, :datetime, :user_id, :activity_id)
+    params.require(:reservation).permit(:user_id, :activity_id)
   end
 
 end 

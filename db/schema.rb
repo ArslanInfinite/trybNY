@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_15_223316) do
+ActiveRecord::Schema.define(version: 5) do
 
   create_table "activities", force: :cascade do |t|
     t.string "title"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_11_15_223316) do
     t.integer "capacity"
     t.integer "price"
     t.datetime "datetime"
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
@@ -54,5 +54,4 @@ ActiveRecord::Schema.define(version: 2020_11_15_223316) do
     t.boolean "admin", default: false, null: false
   end
 
-  add_foreign_key "activities", "users"
 end

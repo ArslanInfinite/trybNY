@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to mainpage_path
+      redirect_to user_path(@user)
     else
       flash[:notice] = 'Invalid username or password.'
       redirect_to login_path
@@ -24,10 +24,9 @@ class SessionsController < ApplicationController
     redirect_to login_path
   end
 
-  def mainpage
-    @user = User.find(session[:user_id])
-    render "/mainpage"
-  end
-
+  # def mainpage
+  #   @user = User.find(session[:user_id])
+  #   render "/mainpage"
+  # end
 
 end

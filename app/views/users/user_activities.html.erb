@@ -1,0 +1,6 @@
+<header><h1>Activities</h1> </header>
+<body><% @reservations.each do |reservation| %>
+  <%= reservation.activity.title %> <br>
+  <%end %>
+
+</body>

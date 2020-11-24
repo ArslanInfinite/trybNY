@@ -5,10 +5,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
-    @user = User.find_by(id: params[:id])
-  end
-
   def new
     @user = User.new
   end
@@ -33,6 +29,10 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def show
+    @user = User.find_by(id: params[:id])
+  end
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   def user_activities
     @user = User.find_by(id: params[:id])
     @reservations = @user.reservations
-    render template: 'activities/index'
+    render template: 'users/user_activities'
   end
 
   def activity 
