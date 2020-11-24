@@ -8,7 +8,7 @@
 <%= f.text_area :content %> <br>
 
 <%= f.label :rating %>
-<%= f.number_field :rating %> <br>
+<%= f.number_field :rating, min: 1, max: 5 %> <br>
 
 <%= f.hidden_field :user_id, :value => session[:user_id] %>
 <%= f.hidden_field :activity_id, :value => @activity.id %>

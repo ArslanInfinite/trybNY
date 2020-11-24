@@ -26,8 +26,6 @@ Rails.application.routes.draw do
   resources :reviews
 
 
-#   get '/add_funds', to: 'users#add_funds', as: 'add_funds'
-
-#   get '/reviews/new/:activity_id', to: 'reviews#new', as: 'new_review'
+# get '/reviews/new/:activity_id', to: 'reviews#new', as: 'new_review'
 
 end

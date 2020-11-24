@@ -1,5 +1,5 @@
 <h1><%= @activity.title %></h1> 
-<body>
+
 Description: <%= @activity.description %> <br>
 
 Location: <%= @activity.location %> <br>
@@ -14,6 +14,12 @@ Reviews: <br>
 Rating: <%= review.rating %> & Content:<%=review.content %><br>
 <%end %>
 <br>
-</body>
 
-<%= button_to "Write a Review", new_review_path(@activity.id),class: "btn", method: :get%>
+
+<% if @activity.end_at < Time.zone.now %>
+Ended <%= time_ago_in_words(@activity.end_at) %> ago
+  <% unless @activity.review(current_user.id)%>
+    <%= link_to "Write a Review", new_review_path(activity_id: @activity.id),class: "btn", method: :get%>
+  <% end %>
+<% end %>
+

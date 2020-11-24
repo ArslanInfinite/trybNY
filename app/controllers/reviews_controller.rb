@@ -14,8 +14,8 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    Review.create(review_params)
-    redirect_to mainpage_path
+    @review = Review.create(review_params)
+    redirect_to activity_path(@review.activity)
   end
 
 private
