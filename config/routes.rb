@@ -8,10 +8,10 @@ Rails.application.routes.draw do
 
   root "welcome#index"
 
-  get 'signup', to: 'users#new'
+  get 'signup', to: 'users#new' #, as: 'signup'
 
-  get '/login', to: 'sessions#new' 
-  post '/login', to: 'sessions#create'
+  get '/login', to: 'sessions#new' #, as: 'login 
+  post '/login', to: 'sessions#create' #, as: 'login
   
   delete '/logout', to: 'sessions#destroy', as: 'logout'
   
@@ -25,14 +25,6 @@ Rails.application.routes.draw do
   resources :reservations
   resources :reviews
 
-  #get 'authors/:id/posts', to: 'authors#posts_index'
-  #get 'authors/:id/posts/:post_id', to: 'authors#post'
-
-#   get "/welcome", to: "users#welcome", as: "welcome"
-
-#   get '/mainpage', to: 'sessions#mainpage', as: 'mainpage'
-
-#   get '/login', to: 'sessions#new', as: 'login'
 
 #   get '/add_funds', to: 'users#add_funds', as: 'add_funds'
 

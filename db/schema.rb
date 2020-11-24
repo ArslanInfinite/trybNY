@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 5) do
+ActiveRecord::Schema.define(version: 2020_11_24_183115) do
 
   create_table "activities", force: :cascade do |t|
     t.string "title"
@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 5) do
     t.integer "rating"
     t.integer "capacity"
     t.integer "price"
-    t.datetime "datetime"
+    t.datetime "start_at"
     t.integer "user_id"
+    t.datetime "end_at"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 

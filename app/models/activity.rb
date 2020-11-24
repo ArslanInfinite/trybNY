@@ -5,7 +5,7 @@ class Activity < ActiveRecord::Base
   has_many :reviews, through: :users 
   has_many :likes, as: :likable
 
-  belongs_to :user
+  belongs_to :user #, optional: true
 
   validates :title, presence: true
   validates :description, presence: true 
