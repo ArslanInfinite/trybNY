@@ -43,7 +43,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
     redirect_to activities_path
-    flash[:notice] = "Your reservation on #{@reservation.activity.datetime} has been canceled"
+    flash[:notice] = "Your reservation on #{@reservation.activity.start_at} has been canceled"
   end
 
 private

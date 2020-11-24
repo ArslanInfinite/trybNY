@@ -13,6 +13,6 @@ class Activity < ActiveRecord::Base
   validates :capacity, length: { maximum: 100, too_long: "%{count} people is the maximum allowed" }
   validates :price, presence: true 
   validates :price, numericality: { only_integer: true }
-  validates :datetime, presence: true 
+  validates :start_at, presence: true 
 
 end

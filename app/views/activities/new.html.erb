@@ -18,8 +18,11 @@
 <%= f.label :price, "Price $" %>
 <%= f.number_field :price %> <br>
 
-<%= f.label :datetime %>
-<%= f.text_field :datetime %> <br>
+<%= f.label :start_at %>
+<%= f.datetime_field :start_at %> <br>
+
+<%= f.label :end_at %>
+<%= f.datetime_field :end_at %> <br>
 
 <%= f.submit "Create New Activity" %>
 <% end %>
