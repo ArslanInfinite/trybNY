@@ -18,12 +18,15 @@ Rails.application.routes.draw do
   get '/users/:id/activities', to: 'users#user_activities', as: 'user_activities'
 
   resources :users do
-    resources :activities 
+    resources :activities #show or index, new 
+    resources :reservations 
   end
 
   resources :activities
   resources :reservations
   resources :reviews
+
+  #users/:id/reservations/new
 
 
 # get '/reviews/new/:activity_id', to: 'reviews#new', as: 'new_review'
