@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :redirect_if_not_logged_in, only: [:new, :create, :destroy]
+  skip_before_action :redirect_if_not_logged_in, only: [:new, :create, :destroy, :google]
 
   def new
     render :new
@@ -24,11 +24,17 @@ class SessionsController < ApplicationController
     redirect_to login_path
   end
 
-  def omniauth
-    @user = User.from_omniauth(auth)
-    @user.save
-    session[:user_id] = @user.id
-    redirect_to home_path
+  def google
+    @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
+      user.username = auth["info"]["first_name"]
+      user.password = SecureRandom.hex(10)
+    end
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      redirect_to '/'
+    end
   end
 
   private
