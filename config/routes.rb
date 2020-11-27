@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   
   get '/users/:id/activities', to: 'users#user_activities', as: 'user_activities'
 
+  get '/auth/:provider/callback' => 'sessions#omniauth'
+
   resources :users do
     resources :activities #show or index, new 
     resources :reservations 
