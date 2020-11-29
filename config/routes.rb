@@ -20,12 +20,12 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#google'
 
   resources :users do
-    resources :activities, only: [:show, :index, :new, :create, :delete] #show or index, new 
-    resources :reservations, only: [:show, :index, :create] 
+    resources :activities, only: [:show, :index, :new, :create, :destroy] #show or index, new 
+    resources :reservations, only: [:show, :index, :create, :destroy] 
   end
 
   resources :activities, only: [:show, :new, :index, :create]
-  resources :reservations, only: [:show]
+  resources :reservations, only: [:show, :destroy]
   resources :reviews
 
   #users/:id/reservations/new

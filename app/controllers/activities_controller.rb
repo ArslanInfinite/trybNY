@@ -21,6 +21,13 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
   end
 
+  def destroy
+    @activity = Activity.find(params[:id])
+    @activity.destroy
+    redirect_to activities_path
+    flash[:notice] = "Your Activity on #{@activity.start_at} has been canceled"
+  end
+
   private
 
   def activity_params
