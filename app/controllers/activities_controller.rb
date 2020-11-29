@@ -9,12 +9,11 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    if current_user.admin? 
+    if current_user.admin
       @activity = Activity.create(activity_params)
       redirect_to activities_path
     else 
-      flash[:error] = "Only Admins Can Create An Activity"
-      redirect_to activities_path
+      redirect_to new_activity_path
     end 
   end
 
@@ -25,7 +24,7 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:title, :description, :rating, :location, :capacity, :price, :start_at)
+    params.require(:activity).permit(:title, :description, :rating, :location, :capacity, :price, :start_at, :end_at, :user_id)
   end
 
 end

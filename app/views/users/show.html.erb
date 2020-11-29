@@ -4,15 +4,18 @@
 <div class ="new_activity">
 Current Balance: <%= @user.balance %>
 <br>
-
+<br>
 <%= button_to "Add Funds", edit_user_path, class: "btn", method: :get %>
-
+<br>
 <%= button_to "View Activities", activities_path,class: "btn", method: :get %>
-
+<br>
+<% if current_user.admin%>
+<%= button_to "Create Activity", new_activity_path, class: "btn", method: :get %>
+<% end %>
+<br>
 <%= button_to "Book Reservation", new_reservation_path,class: "btn", method: :get %>
-
-<%= button_to "My Activities", user_activities_path(current_user), class: "btn", method: :get %>
-
+<br>
+<%= button_to "Booked Activities", user_activities_path(current_user), class: "btn", method: :get %>
+<br>
 <%= button_to "Logout", logout_path, class: "btn", method: :delete %>
-
 </div>

@@ -1,7 +1,6 @@
 <h1>Create New Activity</h1>
 <br>
 
-<div class ="new_activity">
 <%= form_for @activity do |f|%>
 <%= f.label :title %>
 <%= f.text_field :title %> <br>
@@ -13,7 +12,7 @@
 <%= f.text_field :location %> <br>
 
 <%= f.label :capacity %>
-<%= f.number_field :capacity %> <br>
+<%= f.number_field :capacity, min: 1, max: 100 %> <br>
 
 <%= f.label :price, "Price $" %>
 <%= f.number_field :price %> <br>
@@ -24,6 +23,7 @@
 <%= f.label :end_at %>
 <%= f.datetime_field :end_at %> <br>
 
-<%= f.submit "Create New Activity" %>
+<%= f.hidden_field :user_id, :value => session[:user_id] %>
+
+<%= f.submit "Create New Activity", class: "btn" %>
 <% end %>
-</div>
