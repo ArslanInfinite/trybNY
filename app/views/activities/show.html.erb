@@ -18,9 +18,11 @@ Rating: <%= review.rating %> & Content:<%=review.content %><br>
 
 <% if @activity.end_at < Time.zone.now %>
 Ended <%= time_ago_in_words(@activity.end_at) %> ago
-  <% unless @activity.review(current_user.id)%>
+  <% if @activity.review(current_user.id).empty? %>
     <%= link_to "Write a Review", new_review_path(activity_id: @activity.id),class: "btn", method: :get%>
   <% end %>
 <% end %>
 
-    <%= button_to "Book Reservation", new_reservation_path, class: "btn", method: :get %>
+<% if current_user.admin? && @activity.user_id == current_user.id%>
+  <%=  button_to 'Delete Activity', user_activity_path(user_id: current_user.id, id: @activity.id), class: "btn", method: :delete%>
+<% end %>

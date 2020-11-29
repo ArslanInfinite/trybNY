@@ -13,8 +13,6 @@ Current Balance: <%= @user.balance %>
 <%= button_to "Create Activity", new_activity_path, class: "btn", method: :get %>
 <% end %>
 <br>
-<%= button_to "Book Reservation", new_reservation_path,class: "btn", method: :get %>
-<br>
 <%= button_to "Booked Activities", user_activities_path(current_user), class: "btn", method: :get %>
 <br>
 <%= button_to "Logout", logout_path, class: "btn", method: :delete %>

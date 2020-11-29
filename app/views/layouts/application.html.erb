@@ -12,6 +12,7 @@
   <body>
     <div class="nav">
       <% if logged_in? && current_user %>
+        <%= button_to "My Profile", user_path(current_user.id), class: "btn", method: :get %>
         <%= button_to "View Activities", activities_path, class: "btn", method: :get %>
         <%= button_to "My Activities", user_activities_path(current_user.id), class: "btn", method: :get %>
         <%= button_to "Logout", logout_path, class: "btn", method: :delete %>
