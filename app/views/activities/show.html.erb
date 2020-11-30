@@ -2,8 +2,8 @@
 
 Description: <%= @activity.description %> <br>
 
-<% if @post.image.attached? %>
-   <%= image_tag url_for(@post.image) %>
+<% if @activity.image.attached? %>
+   <%= image_tag @activity.image.variant(resize_to_limit: [100, 100]) %>
 <% end %>
 
 

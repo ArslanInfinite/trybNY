@@ -10,7 +10,11 @@ class ActivitiesController < ApplicationController
 
   def create
     if current_user.admin
-      @activity = Activity.create(activity_params)
+      @activity = Activity.new(activity_params)
+        if @activity.save
+        @activity.image.attach(params[:activity][:image])
+        @activity.save
+        end
       redirect_to activities_path
     else 
       redirect_to new_activity_path

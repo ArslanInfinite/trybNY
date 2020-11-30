@@ -8,9 +8,12 @@
 
 <div class="ui grid">
   <% @activities.each do |activity| %>
-      <%= link_to activity.title, activity_path(activity)%></a>
+      <%= link_to activity.title, activity_path(activity)%>
+      <% if @activity.image.attached? %>
+      <%= image_tag activity.image.variant(resize_to_limit: [100, 100]) %>
+      <% end %>
     <br>
-     <%= activity.description %>
+    <%= activity.description %>
     <%= button_to "Book Reservation", user_reservations_path(user_id: current_user.id, reservation: {user_id: current_user.id, activity_id: activity.id}), class: "btn", method: :post, data: {disable_with: "Please Wait..."} %>
     <br>
   <%end %>
