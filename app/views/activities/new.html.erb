@@ -23,10 +23,31 @@
 <%= f.label :end_at %>
 <%= f.datetime_field :end_at %> <br>
 
-<%= f.label :image %> 
-<%= f.file_field :image %>
+<%= f.hidden_field :imageurl %>
+
+<button id="uploadImage" type="button">Upload Image</button>
+
 
 <%= f.hidden_field :user_id, :value => session[:user_id] %>
-
+<br><br>
 <%= f.submit "Create New Activity", class: "btn" %>
 <% end %>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+  const options =  {
+  onFileUploadFinished: file => {
+    console.log(file);
+    document.querySelector("#activity_imageurl").value = file.url;
+    document.querySelector("#uploadImage").innerText = `Image ${file.filename} Uploaded successfully`;
+
+    document.querySelector("#uploadImage").disabled = true; 
+  }
+};
+  document.querySelector("#uploadImage").addEventListener('click', () => {
+    filestack_client.picker(options).open()
+  })
+});
+
+</script>

@@ -5,8 +5,6 @@ class Activity < ActiveRecord::Base
   has_many :reviews
   has_many :likes, as: :likable
 
-  has_one_attached :image
-
   belongs_to :user #, optional: true
 
   validates :title, presence: true

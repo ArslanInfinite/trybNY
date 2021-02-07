@@ -11,10 +11,7 @@ class ActivitiesController < ApplicationController
   def create
     if current_user.admin
       @activity = Activity.new(activity_params)
-        if @activity.save
-        @activity.image.attach(params[:activity][:image])
-        @activity.save
-        end
+      @activity.save
       redirect_to activities_path
     else 
       redirect_to new_activity_path
@@ -35,7 +32,7 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:title, :description, :rating, :location, :capacity, :price, :start_at, :end_at, :image, :user_id)
+    params.require(:activity).permit(:title, :description, :rating, :location, :capacity, :price, :start_at, :end_at, :imageurl, :user_id)
   end
 
 end

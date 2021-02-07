@@ -11,6 +11,8 @@ Activity.destroy_all
 Review.destroy_all
 User.destroy_all
 
+User.create!(username: "arslan", password: "arslan", balance: 1000000000, admin: true)
+
 Activity.create!(title: "Rumble Boxing", description: "An all-level, 45-minute boxing and strength training workout. 10 rounds, 2 fists, 0 experience necessary.", location: "1495 3rd Avenue, New York, NY, 10028", capacity: 30, price: 60, start_at: 10.seconds.from_now, end_at: 25.seconds.from_now, user_id: 1)
 
 Activity.create!(title: "UFC - Park Slope", description: "Looking to get in shape, lose weight, gain muscle, learn self defense, or compete in a Brazilian Jiu-Jitsu tournament? We have some of the best coaches in the industry to help reach your goals. We offer BJJ, MMA, boxing, and kickboxing classes.", location: "340 4th Ave, 2nd Floor, Brooklyn, NY, 11215", capacity: 20, price: 60, start_at: 10.seconds.from_now, end_at: 25.seconds.from_now, user_id: 1)
