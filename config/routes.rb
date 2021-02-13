@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   resources :reservations, only: [:show, :destroy]
   resources :reviews
 
+  resources :likes, only: [:create]
+  
   #users/:id/reservations/new
 # get '/reviews/new/:activity_id', to: 'reviews#new', as: 'new_review'
 

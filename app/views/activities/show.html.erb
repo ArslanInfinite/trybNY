@@ -1,12 +1,10 @@
 <h1><%= @activity.title %></h1> 
 
-Description: <%= @activity.description %> <br>
-
-<% if @activity.image.attached? %>
-   <%= image_tag @activity.image.variant(resize_to_limit: [100, 100]) %>
+<% if @activity.imageurl %>
+  <%= filestack_image @activity.imageurl, size: "400x300", alt: "Picture" %>
 <% end %>
-
-
+<br><br>
+Description: <%= @activity.description %> <br>
 Location: <%= @activity.location %> <br>
 Capacity: <%= @activity.capacity %> <br>
 Price:    <%= @activity.price %> <br>
@@ -17,9 +15,13 @@ End Time <%= @activity.end_at %> <br>
 Reviews: <br>
 <% @activity.reviews.each do |review| %>
 Rating: <%= review.rating %> & Content:<%=review.content %><br>
+ 
+<% unless review.likes.where(user_id: current_user.id).any?%>
+  <%= button_to "Like", likes_path(id: review.id), method: :post  %>
+<% end %>
+  Likes: <%= review.likes.count %>
 <%end %>
 <br>
-
 
 <% if @activity.end_at < Time.zone.now %>
 Ended <%= time_ago_in_words(@activity.end_at) %> ago

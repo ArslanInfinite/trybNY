@@ -1,7 +1,11 @@
 class ActivitiesController < ApplicationController
 
   def index
-    @activities = Activity.all
+    @activities = if params[:filter] == 'highest_rated'
+      Activity.highest_rated
+    else 
+      Activity.all
+    end
   end
 
   def new

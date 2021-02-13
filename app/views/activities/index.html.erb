@@ -6,15 +6,23 @@
 
 <body>
 
+<%= link_to "All Activites", activities_path %>
+|
+<%= link_to "Top Rated Activites", activities_path(filter: 'highest_rated')%>
+
+
 <div class="ui grid">
   <% @activities.each do |activity| %>
-      <%= link_to activity.title, activity_path(activity)%>
-      <% if activity.imageurl %>
+  <% if activity.imageurl %>
         <%= filestack_image activity.imageurl, size: "400x300", alt: "Picture" %>
       <% end %>
+      <br>
+      <%= link_to activity.title, activity_path(activity)%>
+      
     <br>
     <%= activity.description %>
     <%= button_to "Book Reservation", user_reservations_path(user_id: current_user.id, reservation: {user_id: current_user.id, activity_id: activity.id}), class: "btn", method: :post, data: {disable_with: "Please Wait..."} %>
+    <br>
     <br>
   <%end %>
 </div>

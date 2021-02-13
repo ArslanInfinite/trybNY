@@ -16,7 +16,8 @@ class Activity < ActiveRecord::Base
   validates :start_at, presence: true 
 
   def self.highest_rated
-    Review.joins(:activity).order(rating: :desc)  
+    @reviews = Review.joins(:activity).order(rating: :desc)  
+    @reviews.map(&:activity)
   end
 
   def review(user_id) 
