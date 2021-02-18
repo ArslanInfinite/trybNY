@@ -1,8 +1,8 @@
 class Activity < ActiveRecord::Base
 
-  has_many :reservations
+  has_many :reservations, dependent: :destroy 
   has_many :users, through: :reservations
-  has_many :reviews
+  has_many :reviews, dependent: :destroy 
   has_many :likes, as: :likable
 
   belongs_to :user #, optional: true
